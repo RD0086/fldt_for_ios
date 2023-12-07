@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>EsLivingDetectionManager Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/objc/Class/EsLivingDetectionManager" class="dashAnchor"></a>
+    <a title="EsLivingDetectionManager Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">EsLivingDetection 1.0.0 Docs</a> (88% documented)</p>
+        <p class="header-right">
+          <form role="search" action="../search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">EsLivingDetection Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        EsLivingDetectionManager Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/EsLivingConfig.html">EsLivingConfig</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EsLivingDetectResult.html">EsLivingDetectResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EsLivingDetectionManager.html">EsLivingDetectionManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EsLivingViewStyle.html">EsLivingViewStyle</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/EsLivingDetectErrorCode.html">EsLivingDetectErrorCode</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Type%20Definitions.html">Type Definitions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Type%20Definitions.html#/c:EsLivingDetectResult.h@T@EsLivingDetectCallback">EsLivingDetectCallback</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>EsLivingDetectionManager</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight objective_c"><code><span class="k">@interface</span> <span class="nc">EsLivingDetectionManager</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                </div>
+              </div>
+            <p>活体检测管理类</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)EsLivingDetectionManager(cm)verifyInit:"></a>
+                    <a name="//apple_ref/objc/Method/+verifyInit:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)EsLivingDetectionManager(cm)verifyInit:">+verifyInit:<wbr></a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>认证初始化</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">+</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n"><a href="../Classes/EsLivingDetectResult.html">EsLivingDetectResult</a></span> <span class="o">*</span><span class="p">)</span><span class="nf">verifyInit</span><span class="p">:(</span><span class="kt">int</span><span class="p">)</span><span class="nv">livingType</span><span class="p">;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>livingType</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>认证类型</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>初始化结果</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)EsLivingDetectionManager(cm)startDetect:viewController:callback:"></a>
+                    <a name="//apple_ref/objc/Method/+startDetect:viewController:callback:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)EsLivingDetectionManager(cm)startDetect:viewController:callback:">+startDetect:<wbr>viewController:<wbr>callback:<wbr></a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>开始执行活体检测</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">startDetect</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">token</span>
+     <span class="nf">viewController</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">UIViewController</span> <span class="o">*</span><span class="p">)</span><span class="nv">viewController</span>
+           <span class="nf">callback</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n"><a href="../Type%20Definitions.html#/c:EsLivingDetectResult.h@T@EsLivingDetectCallback">EsLivingDetectCallback</a></span><span class="p">)</span><span class="nv">callback</span><span class="p">;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>token</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>认证token</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>viewController</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>父容器</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>callback</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>认证结果回调代码块</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)EsLivingDetectionManager(cm)startDetect2:viewController:callback:windowSwitchType:"></a>
+                    <a name="//apple_ref/objc/Method/+startDetect2:viewController:callback:windowSwitchType:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)EsLivingDetectionManager(cm)startDetect2:viewController:callback:windowSwitchType:">+startDetect2:<wbr>viewController:<wbr>callback:<wbr>windowSwitchType:<wbr></a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>开始执行活体检测</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">startDetect2</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">token</span>
+      <span class="nf">viewController</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">UIViewController</span> <span class="o">*</span><span class="p">)</span><span class="nv">viewController</span>
+            <span class="nf">callback</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n"><a href="../Type%20Definitions.html#/c:EsLivingDetectResult.h@T@EsLivingDetectCallback">EsLivingDetectCallback</a></span><span class="p">)</span><span class="nv">callback</span>
+    <span class="nf">windowSwitchType</span><span class="p">:(</span><span class="n">NSInteger</span><span class="p">)</span><span class="nv">type</span><span class="p">;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>token</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>认证token</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>viewController</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>父容器</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>callback</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>认证结果回调代码块</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>type</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>1: 使用nav 方式进行页面跳转 2:使用modal跳转</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)EsLivingDetectionManager(cm)LivingViewStyleInstance"></a>
+                    <a name="//apple_ref/objc/Method/+LivingViewStyleInstance" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)EsLivingDetectionManager(cm)LivingViewStyleInstance">+LivingViewStyleInstance</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>获取活体界面样式实例</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">+</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n"><a href="../Classes/EsLivingViewStyle.html">EsLivingViewStyle</a></span> <span class="o">*</span><span class="p">)</span><span class="n">LivingViewStyleInstance</span><span class="p">;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>EsLivingViewStyle 活体检测界面样式实例</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)EsLivingDetectionManager(cm)LivingConfigInstance"></a>
+                    <a name="//apple_ref/objc/Method/+LivingConfigInstance" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)EsLivingDetectionManager(cm)LivingConfigInstance">+LivingConfigInstance</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>获取活体配置实例</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">+</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n"><a href="../Classes/EsLivingConfig.html">EsLivingConfig</a></span> <span class="o">*</span><span class="p">)</span><span class="n">LivingConfigInstance</span><span class="p">;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>EsLivingConfig 活体检测配置实例</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)EsLivingDetectionManager(cm)GetLdtVideo:"></a>
+                    <a name="//apple_ref/objc/Method/+GetLdtVideo:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)EsLivingDetectionManager(cm)GetLdtVideo:">+GetLdtVideo:<wbr></a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>通过获取活体检测录制的视频数据</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">+</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">NSData</span> <span class="o">*</span><span class="p">)</span><span class="nf">GetLdtVideo</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">token</span><span class="p">;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>token</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>活体检测对应的token</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>.mov 格式的视频数据</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)EsLivingDetectionManager(cm)GetLdtVideoFilePath:"></a>
+                    <a name="//apple_ref/objc/Method/+GetLdtVideoFilePath:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)EsLivingDetectionManager(cm)GetLdtVideoFilePath:">+GetLdtVideoFilePath:<wbr></a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>获取指定token 对应视频的文件路径</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">+</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">GetLdtVideoFilePath</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">token</span><span class="p">;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>token</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>活体检测对应的token</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>文件的路径</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)EsLivingDetectionManager(cm)GetLdtVideoRootDirectory"></a>
+                    <a name="//apple_ref/objc/Method/+GetLdtVideoRootDirectory" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)EsLivingDetectionManager(cm)GetLdtVideoRootDirectory">+GetLdtVideoRootDirectory</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>获取活体检测的视频存放根路径</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">+</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">GetLdtVideoRootDirectory</span><span class="p">;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>文件的路径</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)EsLivingDetectionManager(cm)getSdkVersion"></a>
+                    <a name="//apple_ref/objc/Method/+getSdkVersion" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)EsLivingDetectionManager(cm)getSdkVersion">+getSdkVersion</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>获取当前SDK版本号</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">+</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">getSdkVersion</span><span class="p">;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>版本号</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2023 <a class="link" href="http://www.esandinfo.com" target="_blank" rel="external">Reid.Lee</a>. All rights reserved. (Last updated: 2023-12-07)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
