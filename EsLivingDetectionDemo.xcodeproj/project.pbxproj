@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		890082252635B51E00221121 /* GZFRadioCheckBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 890082222635B51E00221121 /* GZFRadioCheckBox.m */; };
-		895060CF2632BCE800EB47F0 /* AliyunHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 895060CD2632BCE800EB47F0 /* AliyunHttpClient.m */; };
+		895060CF2632BCE800EB47F0 /* MyHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 895060CD2632BCE800EB47F0 /* MyHttpClient.m */; };
 		89B7F6202670D3DC00B41F47 /* EsLivingDetection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89B7F6192670D22C00B41F47 /* EsLivingDetection.framework */; };
 		89B7F6212670D3DC00B41F47 /* EsLivingDetection.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 89B7F6192670D22C00B41F47 /* EsLivingDetection.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		89C8DB7925932B0700596798 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C8DB7825932B0700596798 /* AppDelegate.m */; };
@@ -38,8 +38,8 @@
 /* Begin PBXFileReference section */
 		890082212635B51E00221121 /* GZFRadioCheckBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZFRadioCheckBox.h; sourceTree = "<group>"; };
 		890082222635B51E00221121 /* GZFRadioCheckBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZFRadioCheckBox.m; sourceTree = "<group>"; };
-		895060CD2632BCE800EB47F0 /* AliyunHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AliyunHttpClient.m; sourceTree = "<group>"; };
-		895060CE2632BCE800EB47F0 /* AliyunHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AliyunHttpClient.h; sourceTree = "<group>"; };
+		895060CD2632BCE800EB47F0 /* MyHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyHttpClient.m; sourceTree = "<group>"; };
+		895060CE2632BCE800EB47F0 /* MyHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyHttpClient.h; sourceTree = "<group>"; };
 		89B7F6192670D22C00B41F47 /* EsLivingDetection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EsLivingDetection.framework; path = frameworks/EsLivingDetection.framework; sourceTree = "<group>"; };
 		89C8DB7425932B0700596798 /* EsLivingDetectionDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EsLivingDetectionDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89C8DB7725932B0700596798 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -94,8 +94,8 @@
 			children = (
 				890082212635B51E00221121 /* GZFRadioCheckBox.h */,
 				890082222635B51E00221121 /* GZFRadioCheckBox.m */,
-				895060CE2632BCE800EB47F0 /* AliyunHttpClient.h */,
-				895060CD2632BCE800EB47F0 /* AliyunHttpClient.m */,
+				895060CE2632BCE800EB47F0 /* MyHttpClient.h */,
+				895060CD2632BCE800EB47F0 /* MyHttpClient.m */,
 				89C8DB7725932B0700596798 /* AppDelegate.h */,
 				89C8DB7825932B0700596798 /* AppDelegate.m */,
 				89C8DB7D25932B0700596798 /* ViewController.h */,
@@ -217,7 +217,7 @@
 			files = (
 				89C8DB7F25932B0700596798 /* ViewController.m in Sources */,
 				89C8DB7925932B0700596798 /* AppDelegate.m in Sources */,
-				895060CF2632BCE800EB47F0 /* AliyunHttpClient.m in Sources */,
+				895060CF2632BCE800EB47F0 /* MyHttpClient.m in Sources */,
 				89C8DB8A25932B0A00596798 /* main.m in Sources */,
 				890082252635B51E00221121 /* GZFRadioCheckBox.m in Sources */,
 				C313E96A2638375D00779606 /* EsRootViewController.m in Sources */,

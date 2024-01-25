@@ -7,7 +7,7 @@
 
 #import "ViewController.h"
 #import <EsLivingDetection/EsLivingDetection.h>
-#import "AliyunHttpClient.h"
+#import "MyHttpClient.h"
 #import "GZFRadioCheckBox.h"
 
 //屏幕宽度
@@ -81,7 +81,13 @@
 //    [self.navigationController pushViewController:controller animated:YES];
 
 //     1. 认证初始化
-    EsLivingDetectResult* esLivingDetectResult = [EsLivingDetectionManager verifyInit: [radioCheckBox getSelectItem]];
+    NSInteger livingType = [radioCheckBox getSelectItem];
+    if (livingType > 9999) {
+        [self logMsg: @"最多只支持四个活体动作"];
+        return ;
+    }
+    
+    EsLivingDetectResult* esLivingDetectResult = [EsLivingDetectionManager verifyInit: livingType];
     if (esLivingDetectResult.code != ELD_SUCCESS) {
         [self logMsg: esLivingDetectResult.msg];
         return;
@@ -89,9 +95,7 @@
 
     // 2. 获取认证token
     NSString* body = [NSString stringWithFormat:@"initMsg=%@", esLivingDetectResult.data];
-    [AliyunHttpClient requestSync:@"https://eface.market.alicloudapi.com/init"
-                             body: body
-                          appcode: APPCODE
+    [MyHttpClient init: body
                    clientCallback:^(NSString * rspMsg) {
         [self logMsg: rspMsg];
         NSDictionary*  dict = [self json2Dict:rspMsg];
@@ -105,10 +109,7 @@
             [EsLivingDetectionManager startDetect: token viewController: self callback:^(EsLivingDetectResult * _Nonnull result) {
                 if (result.code == ELD_SUCCESS) {
                     NSString* body = [NSString stringWithFormat:@"token=%@&verifyMsg=%@", result.token, result.data];
-    //                NSLog(@"%@",[body substringFromIndex:2000]);
-                                        [AliyunHttpClient requestSync:@"https://eface.market.alicloudapi.com/verify"
-                                            body: body
-                                            appcode: APPCODE
+                                        [MyHttpClient verify: body
                                             clientCallback:^(NSString * rspMsg) {
                                                 [self logMsg: rspMsg];
                                             } ];
