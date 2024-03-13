@@ -79,6 +79,26 @@ typedef enum CRYPT_KEY_TYPE{
 -(BOOL) GetUseStrictMode;
 
 -(void) SetUseStrictMode:(BOOL)value;
+
+-(void) SetOcrIncFront:(BOOL)value;
+
+-(BOOL) GetOcrIncFront;
+
+-(void) SetOcrFirst:(BOOL)value;
+
+-(BOOL) GetOcrFirst;
+
+-(void) SetWithOcr:(BOOL)value;
+
+-(BOOL) GetWithOcr;
+
+-(void) SetNavigateShow:(BOOL)value;
+
+-(BOOL) GetNavigate;
+
+-(void) SetMode:(int)value;
+
+-(BOOL) GetMode;
 @end
 
 NS_ASSUME_NONNULL_END
