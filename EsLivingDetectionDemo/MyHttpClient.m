@@ -40,13 +40,13 @@
     
     //防重放
     NSDate *date = [NSDate date];
-     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-     [dateFormatter setDateFormat:@"yyyyMMddHHmmssSSS"];
-     NSString *dateStr = [dateFormatter stringFromDate:date];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyyMMddHHmmssSSS"];
+    NSString *dateStr = [dateFormatter stringFromDate:date];
     [nsMutableURLRequest setValue:dateStr forHTTPHeaderField:@"X-Ca-Nonce"];
     
     NSString* appcodeStr = nil;
-    if ([url hasPrefix:@"https://eface.market.alicloudapi.com"]) {
+    if ([url containsString:@"alicloudapi.com"]) {
         appcodeStr = [[NSString alloc] initWithFormat:@"APPCODE %@",APPCODE];
     } else {
         appcodeStr = [[NSString alloc] initWithFormat:@"APPCODE %@",E_SECRET];
@@ -71,10 +71,10 @@
     [task resume];
 }
 
-/// 认证初始化
+/// 活体检测-初始化
 /// @param body body字段数据
 /// @param clientCallback 执行回调
-+ (void) init: (NSString *)body clientCallback:(ClientCallback) clientCallback {
++ (void) ldtInit: (NSString *)body clientCallback:(ClientCallback) clientCallback {
     NSString* url = nil;
     if ([APPCODE hasPrefix:@"TODO"] && ([E_APPCODE hasPrefix:@"TODO"] && [E_SECRET hasPrefix:@"TODO"])) {
         NSLog(@"如果是阿里云网关接入，请先设置 APPCODE , 如果非阿里云网关接入，请先设置 E_APPCODE, E_SECRET ， 如有疑问请联系 ：13691664797");
@@ -91,10 +91,10 @@
     [MyHttpClient requestSync: url body:body clientCallback:clientCallback];
 }
 
-/// 获取认证结果
+/// 活体检测-获取认证结果
 /// @param body body字段数据
 /// @param clientCallback 执行回调
-+ (void) verify: (NSString *)body clientCallback:(ClientCallback) clientCallback {
++ (void) ldtVerify: (NSString *)body clientCallback:(ClientCallback) clientCallback {
     NSString* url = nil;
     if (![APPCODE hasPrefix:@"TODO"]) {
         url = ALIYUN_VERIFY_URL;
@@ -105,4 +105,59 @@
     [MyHttpClient requestSync: url body:body clientCallback:clientCallback];
 }
 
+
+/// 实名认证-初始化
+/// @param body body字段数据
+/// @param clientCallback 执行回调
++ (void) rpInit: (NSString *)body clientCallback:(ClientCallback) clientCallback {
+    NSString* url = nil;
+    if ([APPCODE hasPrefix:@"TODO"] && ([E_APPCODE hasPrefix:@"TODO"] && [E_SECRET hasPrefix:@"TODO"])) {
+        NSLog(@"如果是阿里云网关接入，请先设置 APPCODE , 如果非阿里云网关接入，请先设置 E_APPCODE, E_SECRET ， 如有疑问请联系 ：13691664797");
+        clientCallback(nil);
+        return;
+    }
+    
+    if (![APPCODE hasPrefix:@"TODO"]) {
+        url = @"https://apprpv.market.alicloudapi.com/init";
+    } else {
+        url = [[NSString alloc] initWithFormat:@"https://edis.esandcloud.com/gateways?APPCODE=%@&ACTION=%@",E_APPCODE, @"livingdetection/rpverify/init"];
+    }
+    
+    [MyHttpClient requestSync: url body:body clientCallback:clientCallback];
+}
+
+/// 实名认证-获取认证结果
+/// @param body body字段数据
+/// @param clientCallback 执行回调
++ (void) rpVerify: (NSString *)body clientCallback:(ClientCallback) clientCallback {
+    NSString* url = nil;
+    if (![APPCODE hasPrefix:@"TODO"]) {
+        url = @"https://apprpv.market.alicloudapi.com/verify";
+    } else {
+        url = [[NSString alloc] initWithFormat:@"https://edis.esandcloud.com/gateways?APPCODE=%@&ACTION=%@",E_APPCODE, @"livingdetection/rpverify/verify"];
+    }
+    
+    [MyHttpClient requestSync: url body:body clientCallback:clientCallback];
+}
+
+
+// json字符串转dict字典
++ (NSDictionary *)json2Dict:(NSString *)json
+{
+    if (json && json != nil &&(NSNull *)json != [NSNull null]&& 0 != json.length) {
+        NSError *error;
+        json = [json stringByReplacingOccurrencesOfString:@"\r\n" withString:@""];
+        json = [json stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+        json = [json stringByReplacingOccurrencesOfString:@"\t" withString:@""];
+        NSData *jsonData = [json dataUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
+        if (error) {
+            return nil;
+        }
+
+        return jsonDict;
+    }
+
+    return nil;
+}
 @end

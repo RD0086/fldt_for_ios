@@ -14,15 +14,28 @@ NS_ASSUME_NONNULL_BEGIN
 
 typedef void (^ClientCallback)(NSString* resultStr);
 
-/// 认证初始化
+/// 活体检测 认证初始化
 /// @param body body字段数据
 /// @param clientCallback 执行回调
-+ (void) init: (NSString *)body clientCallback:(ClientCallback) clientCallback;
++ (void) ldtInit: (NSString *)body clientCallback:(ClientCallback) clientCallback;
     
-/// 获取认证结果
+/// 活体检测 获取认证结果
 /// @param body body字段数据
 /// @param clientCallback 执行回调
-+ (void) verify: (NSString *)body clientCallback:(ClientCallback) clientCallback;
++ (void) ldtVerify: (NSString *)body clientCallback:(ClientCallback) clientCallback;
+
+/// 实名认证 认证初始化
+/// @param body body字段数据
+/// @param clientCallback 执行回调
++ (void) rpInit: (NSString *)body clientCallback:(ClientCallback) clientCallback;
+    
+/// 实名认证 获取认证结果
+/// @param body body字段数据
+/// @param clientCallback 执行回调
++ (void) rpVerify: (NSString *)body clientCallback:(ClientCallback) clientCallback;
+
+// json字符串转dict字典
++ (NSDictionary *)json2Dict:(NSString *)json;
 
 @end
 

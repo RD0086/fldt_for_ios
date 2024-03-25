@@ -28,8 +28,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor=[UIColor whiteColor];
-    //导航栏高度
-//    CGFloat navHeight = self.navigationController.navigationBar.frame.size.height;
     //导航栏+状态栏高度
     CGFloat topHeight = self.navigationController.navigationBar.frame.size.height + [[UIApplication sharedApplication] statusBarFrame].size.height;
 
@@ -61,32 +59,35 @@
     //设置按钮点击事件
     [button addTarget:self action:@selector(startLivingDetect:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button];
+    
+    // 实名认证按钮
+    UIButton * rpButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    rpButton.frame = CGRectMake(10, topHeight + 140 , SCREEN_WIDTH-20, 50) ;
+    [rpButton setTitle:@"开始实名认证" forState:UIControlStateNormal];
+    [rpButton addTarget:self action:@selector(startRPVerify:) forControlEvents:UIControlEventTouchUpInside];
+    [rpButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [rpButton setBackgroundColor:[UIColor colorWithRed:239.0/255.0 green:137.0/255.0 blue:47.0/255.0 alpha:1.0]];
+    [rpButton.layer setCornerRadius:20.0];
+    [self.view addSubview:rpButton];
 
-    UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(10, topHeight + 160, SCREEN_WIDTH - 20, SCREEN_HEIGHT - topHeight - 150)];
+    UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(10, topHeight + 2000, SCREEN_WIDTH - 20, SCREEN_HEIGHT - topHeight - 150)];
     // Do any additional setup after loading the view, typically from a nib.
     _textView = [[UITextView alloc] initWithFrame:CGRectMake(scrollView.frame.origin.x, scrollView.frame.origin.y,scrollView.frame.size.width, scrollView.frame.size.height)];
     _textView.pagingEnabled = YES;
     _textView.clipsToBounds = YES;
     _textView.editable = NO;
 
-    //[self.navigationController pushViewController:_textView animated:YES];
     [self.view addSubview:_textView];
 }
 
 -(IBAction)startLivingDetect:(id)sender {
-
-//    UIViewController *controller=[[UIViewController alloc]init];
-//    controller.title=[NSString stringWithFormat:@"1111"];
-//    controller.view.backgroundColor=[UIColor whiteColor];
-//    [self.navigationController pushViewController:controller animated:YES];
-
-//     1. 认证初始化
+    // 1. 认证初始化
     NSInteger livingType = [radioCheckBox getSelectItem];
     if (livingType > 9999) {
         [self logMsg: @"最多只支持四个活体动作"];
         return ;
     }
-    
+
     EsLivingDetectResult* esLivingDetectResult = [EsLivingDetectionManager verifyInit: livingType];
     if (esLivingDetectResult.code != ELD_SUCCESS) {
         [self logMsg: esLivingDetectResult.msg];
@@ -95,23 +96,73 @@
 
     // 2. 获取认证token
     NSString* body = [NSString stringWithFormat:@"initMsg=%@", esLivingDetectResult.data];
-    [MyHttpClient init: body
+    [MyHttpClient ldtInit: body
                    clientCallback:^(NSString * rspMsg) {
         [self logMsg: rspMsg];
-        NSDictionary*  dict = [self json2Dict:rspMsg];
+        NSDictionary*  dict = [MyHttpClient json2Dict:rspMsg];
         NSString* token = dict[@"token"];
         if (token==nil) {
             [self logMsg: @"获取TOKEN失败"];
         } else {
-//            [[EsLivingDetectionManager LivingViewStyleInstance]setBackGroundColor:@"#123312"];
+            // 样式设置 (可选)
             [[[[[[[EsLivingDetectionManager LivingViewStyleInstance]setTextColor:@"#ff1231"]setBackGroundColor:@"#eeeeee"]setProgressBgColor:@"#2222ff"]setProgressStaGradient:@"#ffff00"]setProgressEndGradient:@"#ff0000"]setProgressBorderColor:@"#ff0000"];
             // 3. 发起活体认证
             [EsLivingDetectionManager startDetect: token viewController: self callback:^(EsLivingDetectResult * _Nonnull result) {
                 if (result.code == ELD_SUCCESS) {
                     NSString* body = [NSString stringWithFormat:@"token=%@&verifyMsg=%@", result.token, result.data];
-                                        [MyHttpClient verify: body
+                                        [MyHttpClient ldtVerify: body
                                             clientCallback:^(NSString * rspMsg) {
                                                 [self logMsg: rspMsg];
+                                            } ];
+                }else{
+                    [self logMsg:result.msg];
+                }
+            } ];
+        }
+    }];
+}
+
+/**
+ * 实名认证
+ */
+-(IBAction)startRPVerify:(id)sender {
+    // 1. 认证初始化
+    NSInteger livingType = [radioCheckBox getSelectItem];
+    if (livingType > 9999) {
+        [self logMsg: @"最多只支持四个活体动作"];
+        return ;
+    }
+
+    [[EsLivingDetectionManager LivingConfigInstance]SetMode: 1]; // 0 ： 仅活体 （默认）  1 ： 全流程，除活体外还支持其他交互页面 (当前仅支持实名认证交互界面)
+    [[EsLivingDetectionManager LivingConfigInstance]SetWithOcr:true]; // 是否包括导航条
+    [[EsLivingDetectionManager LivingConfigInstance]SetOcrFirst:false]; // OCR 优先
+    [[EsLivingDetectionManager LivingConfigInstance]SetOcrIncFront:true]; // 是否包括身份证正面 (国徽面)
+    [[EsLivingDetectionManager LivingConfigInstance]SetNavigateShow:false]; // 是否包括导航条（多动作才有导航条）
+    EsLivingDetectResult* esLivingDetectResult = [EsLivingDetectionManager verifyInit: livingType];
+    if (esLivingDetectResult.code != ELD_SUCCESS) {
+        [self logMsg: esLivingDetectResult.msg];
+        return;
+    }
+
+    // 2. 获取认证token
+    NSString* body = [NSString stringWithFormat:@"initMsg=%@&certName=%@&certNo=%@", esLivingDetectResult.data, @"", @""];
+    [MyHttpClient rpInit: body clientCallback:^(NSString * rspMsg) {
+        [self logMsg: rspMsg];
+        NSDictionary*  dict = [MyHttpClient json2Dict:rspMsg];
+        NSString* token = dict[@"token"];
+        if (token==nil) {
+            [self logMsg: @"获取TOKEN失败"];
+        } else {
+            // 样式设置 (可选)
+            [[[[[[[EsLivingDetectionManager LivingViewStyleInstance]setTextColor:@"#ff1231"]setBackGroundColor:@"#eeeeee"]setProgressBgColor:@"#2222ff"]setProgressStaGradient:@"#ffff00"]setProgressEndGradient:@"#ff0000"]setProgressBorderColor:@"#ff0000"];
+            // 3. 发起实名认证
+            [EsLivingDetectionManager startOcrFaceAuth:self token:token callback:^(EsLivingDetectResult * _Nonnull result) {
+                if (result.code == ELD_SUCCESS) {
+                    NSString* body = [NSString stringWithFormat:@"token=%@&verifyMsg=%@", result.token, result.data];
+                                        [MyHttpClient rpVerify: body
+                                            clientCallback:^(NSString * rspMsg) {
+                                                [self logMsg: rspMsg];
+                                                NSLog(@"认证结果 ： %@", rspMsg);
                                             } ];
                 }else{
                     [self logMsg:result.msg];
@@ -143,27 +194,5 @@
         [self->_textView setAttributedText:tvStr];
     });
 }
-
-// json字符串转dict字典
-- (NSDictionary *)json2Dict:(NSString *)json
-{
-    if (json && json != nil &&(NSNull *)json != [NSNull null]&& 0 != json.length) {
-        NSError *error;
-        json = [json stringByReplacingOccurrencesOfString:@"\r\n" withString:@""];
-        json = [json stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-        json = [json stringByReplacingOccurrencesOfString:@"\t" withString:@""];
-        NSData *jsonData = [json dataUsingEncoding:NSUTF8StringEncoding];
-        NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
-
-        if (error) {
-            return nil;
-        }
-
-        return jsonDict;
-    }
-
-    return nil;
-}
-
 
 @end
