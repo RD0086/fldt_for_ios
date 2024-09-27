@@ -5,6 +5,9 @@ Android/IOS活体检测 (眨眼，摇头，点头，张嘴，远近，炫彩)，
 
 ![DEMO](imgs/demo.gif)
 
+
+- H5 体验DEMO链接 ： https://dev.esandcloud.com/h5demo/esand/living
+
 ### 参考文档
 - 接入参考文档, 如下（按功能分）：
     - 活体检测：https://esandinfo.yuque.com/yv6e1k/aa4qsg/axsfon
