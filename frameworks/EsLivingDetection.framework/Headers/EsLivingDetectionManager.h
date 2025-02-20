@@ -20,6 +20,12 @@ NS_ASSUME_NONNULL_BEGIN
 @interface EsLivingDetectionManager : NSObject
 
 /**
+ * 初始化引擎，此方法建议提前调用，比较耗时
+ * 如果没有提前调用将在调用 verifyInit 接口 自动调用InitEngine 接口
+ */
++ (void) InitEngine;
+
+/**
  * 认证初始化
  * @param livingType 认证类型
  * @return 初始化结果

@@ -370,7 +370,7 @@
 					"$(PROJECT_DIR)/frameworks",
 					"$(PROJECT_DIR)/../frameworks",
 				);
-				GCC_PREPROCESSOR_DEFINITIONS = APPCODE;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				INFOPLIST_FILE = EsLivingDetectionDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -395,7 +395,7 @@
 					"$(PROJECT_DIR)/frameworks",
 					"$(PROJECT_DIR)/../frameworks",
 				);
-				GCC_PREPROCESSOR_DEFINITIONS = APPCODE;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				INFOPLIST_FILE = EsLivingDetectionDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (

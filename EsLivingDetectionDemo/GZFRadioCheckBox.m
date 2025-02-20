@@ -157,7 +157,12 @@
     {
         if ([button isKindOfClass:[UIButton class]]) {
             if(button.selected){
-                result = result * 10 + button.tag;
+                int tag = button.tag;
+                if (tag == 7) {
+                    tag = 8;
+                }
+                
+                result = result * 10 + tag;
             }
         }
     }

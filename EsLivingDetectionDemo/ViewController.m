@@ -40,8 +40,8 @@
     radioCheckBox.showTextColor = [UIColor orangeColor];
     radioCheckBox.showTextFont = [UIFont systemFontOfSize:14];
     // 1：远近，2：眨眼，3：摇头，4: 点头，5:张嘴，6：炫彩
-    radioCheckBox.hideTextArray = [NSArray arrayWithObjects:@"1",@"2",@"3",@"4", @"5", @"6", nil];
-    radioCheckBox.showTextArray = [NSArray arrayWithObjects:@"远近",@"眨眼",@"摇头",@"点头",@"张嘴",@"炫彩", nil];
+    radioCheckBox.hideTextArray = [NSArray arrayWithObjects:@"1",@"2",@"3",@"4", @"5", @"6", @"8",nil];
+    radioCheckBox.showTextArray = [NSArray arrayWithObjects:@"远近",@"眨眼",@"摇头",@"点头",@"张嘴",@"炫彩", @"静默",nil];
     [radioCheckBox radioCheckBoxClick:^(NSUInteger index, NSString *showText, NSString *hideText) {
         self->livingType = (int)index+1;
     }];
